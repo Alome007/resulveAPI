@@ -12,6 +12,5 @@ public class soundPay {
         Intent intent=new Intent(c,soundPayRecieve.class);
         intent.putExtra("receiverId",receiverID);
         listerners.onComplete("Complete");
-
     }
 }
