@@ -6,9 +6,10 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.resulve.sdk.listerners;
+import com.resulve.sdk.mainListener;
 import com.resulve.sdk.soundPay;
 
-public class MainActivity extends AppCompatActivity implements listerners {
+public class MainActivity extends AppCompatActivity implements listerners,mainListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

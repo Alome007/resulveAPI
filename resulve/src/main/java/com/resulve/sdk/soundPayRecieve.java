@@ -8,7 +8,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class soundPayRecieve extends AppCompatActivity {
+public class soundPayRecieve extends AppCompatActivity implements mainListener {
     public static final int REQUEST_CODE = 0;
     mainListener mainListener;
     public soundPayRecieve(mainListener listener){
@@ -25,11 +25,14 @@ public class soundPayRecieve extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mainListener.onComplete("My Name is Alome Daniel...");
             }
         },1500);
 
 
     }
 
+    @Override
+    public void onComplete(String data) {
+
+    }
 }
