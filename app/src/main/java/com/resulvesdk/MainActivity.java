@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity implements listerners {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new soundPay(this).withReceive(this,"theNameOfAlomeDanielISAlomeOchoche");
+        new soundPay(this).withReceive(this,"hi",333,"");
     }
 
     @Override
