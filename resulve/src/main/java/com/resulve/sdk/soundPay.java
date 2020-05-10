@@ -56,18 +56,7 @@ public class soundPay extends AppCompatActivity {
                 chirpSdk.getProtocolName() + " v" + chirpSdk.getProtocolVersion();
         chirpSdk.setListener(new ChirpEventListener() {
             @Override
-            public void onSent(@NotNull byte[] bytes, int i) {
-
-            }
-
-            @Override
-            public void onSending(@NotNull byte[] bytes, int i) {
-
-            }
-
-            @Override
-            public void onReceived(@Nullable final byte[] data, int i) {
-
+            public void onSent(@NotNull final byte[] data, int i) {
                 if (data != null) {
 
                     runOnUiThread(new Runnable() {
@@ -85,6 +74,15 @@ public class soundPay extends AppCompatActivity {
                         }
                     });
                 }
+            }
+            @Override
+            public void onSending(@NotNull byte[] bytes, int i) {
+
+            }
+
+            @Override
+            public void onReceived(@Nullable final byte[] data, int i) {
+
             }
 
             @Override
@@ -104,7 +102,7 @@ public class soundPay extends AppCompatActivity {
         });
         ChirpError error = chirpSdk.start();
         if (error.getCode() > 0) {
-            Toast.makeText(c, "Something went Wrong.."+" "+error.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(c, error.getMessage(), Toast.LENGTH_SHORT).show();
                         Log.e("ChirpError: ", error.getMessage());
                     } else {
             send(receiverID);
