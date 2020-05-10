@@ -51,7 +51,6 @@ public class soundPay extends AppCompatActivity {
         if (setConfigError.getCode() > 0) {
             Log.e(TAG, setConfigError.getMessage());
         } else {
-            send(receiverID);
         }
         String versionDisplay = chirpSdk.getVersion() + "\n" +
                 chirpSdk.getProtocolName() + " v" + chirpSdk.getProtocolVersion();
@@ -103,7 +102,15 @@ public class soundPay extends AppCompatActivity {
 
             }
         });
-
+        ChirpError error = chirpSdk.start();
+        if (error.getCode() > 0) {
+            Toast.makeText(c, "Something went Wrong.."+" "+error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.e("ChirpError: ", error.getMessage());
+                    } else {
+            send(receiverID);
+            Log.v("ChirpSDK: ", "Started ChirpSDK");
+//
+                    }
     }
 
     @Override
@@ -142,13 +149,13 @@ public class soundPay extends AppCompatActivity {
         switch (requestCode) {
             case RESULT_REQUEST_RECORD_AUDIO: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    ChirpError error = chirpSdk.start();
-                    if (error.getCode() > 0) {
-                        Log.e("ChirpError: ", error.getMessage());
-                    } else {
-                        Log.v("ChirpSDK: ", "Started ChirpSDK");
-
-                    }
+//                    ChirpError error = chirpSdk.start();
+//                    if (error.getCode() > 0) {
+//                        Log.e("ChirpError: ", error.getMessage());
+//                    } else {
+//                        Log.v("ChirpSDK: ", "Started ChirpSDK");
+//
+//                    }
                 }
                 return;
             }
