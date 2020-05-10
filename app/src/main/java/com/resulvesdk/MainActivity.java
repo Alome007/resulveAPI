@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements listerners {
 
     @Override
     public void onComplete(String message) {
+        String data=new String(message);
         Toast.makeText(this, "Data Completed", Toast.LENGTH_SHORT).show();
     }
 }

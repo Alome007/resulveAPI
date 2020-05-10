@@ -37,7 +37,7 @@ public class soundPay extends AppCompatActivity {
     public soundPay(listerners listerners){
         this.listerners=listerners;
     }
-    public void withReceive(Context c, String receiverID, int amount, String date){
+    public void withReceive(Context c, String receiverID, int amount, final String date){
         if (CHIRP_APP_KEY.equals("") || CHIRP_APP_SECRET.equals("")) {
             Log.e(TAG, "CHIRP_APP_KEY or CHIRP_APP_SECRET is not set. " +
                     "Please update with your CHIRP_APP_KEY/CHIRP_APP_SECRET from developers.chirp.io");
@@ -62,7 +62,8 @@ public class soundPay extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            listerners.onComplete(data.toString());
+                            String dat=new String(data);
+                            listerners.onComplete(dat);
                         }
                     });
                 }else {
